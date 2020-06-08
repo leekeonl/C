@@ -1,0 +1,356 @@
+#include <stdio.h>
+
+void main(){
+	/*
+	제어문
+	  : 프로그램의 흐름을 제어하여 원하는 문장만을 실행하거나 특정한 블록을
+	   반복하여 실행 할 수 있도록 하는 명령문
+	*/
+
+	/*
+	조건문(if)
+	  : 어떤 특정 조건에 따라서 명령이 실행되도록 해주는 문.
+	     1. 단일 if 문 : 조건을 만족하면 해당되는 명령문 실행
+			
+		    ex ) if(조건식)
+				명령문;
+
+	     2. if ~ else 문 
+		     : 조건을 만족하면 해당되는 명령문을 실행하고, 
+                       그렇지 않으면 무조건 else 의 해당되는 명령문을 실행 한다.
+		                 
+		    ex ) if(조건식)
+				명령문1;
+		 	 else
+				명령문2;
+
+	     3. 중첩 if 문
+		     : if문 안에 또 if문을 사용하는 방식.
+			   어떤 조건에 대한 값이 참 또는 아닐때의 결과 값을, 
+			   다시 세분화하여 나누어 줄때 사용 한다.
+			
+		    ex ) if(1조건식)
+				명령문1;
+				if(2-1조건식)
+				     참 : 명령문 2-1;
+				else
+				   거짓 : 명령문 2-2;
+			  else
+			     	명령문3;
+
+	     4. 다중 if문 ( if ~ else if ~ else 문 )
+		     : 여러가지의 조건을 부여하고 싶을때 사용. 
+		       추가할 조건은 else if(조건문) 뒤에 넣어서 사용하면 된다.
+		       위에서 아래로 진행해 가면서, 만족하는 조건이 나오면 해당 명령문을
+		       실행하고, 마지막 else까지도 건너뛴다.
+		       조건이 많아지면 if 뒤에나 else 앞에 여러개의 else if를 추가하면 된다
+		       단. 최상위 조건 또는 최하위 조건부터 실행해야 오류가 생기지 않는다.
+			
+		     ex ) if(1.조건식)
+				명령문1;
+			  else if(2.조건식)
+				명령문2;
+			  else 
+				명령문3;
+
+	*/
+
+
+	// if 아래 단일 명령문 일때
+	/*
+	int a = -2;
+
+	if(a<0)
+		printf("a는 음수입니다\n");
+	printf("너무 쉽죠잉~~~\n");
+	*/
+
+//--------------------------------------
+	
+	// if 아래 여러개의 명령문일때
+	/*
+	int a=10;
+
+	if(a<0){
+		printf("a는 음수입니다.");
+		printf("재미있나요?");
+	}
+	if(a>0){
+		printf("a는 양수라네요");
+		printf("진짜 양수에요");
+	}
+	*/
+
+	/*
+	int in;
+
+	printf("정수 입력: ");
+	scanf("%d",&in);
+
+	if(in%2 == 0){
+		printf("입력된 값은 짝수당~\n");
+		printf("지루해~");
+	}
+	if(in%2!=0){
+		printf("입력된 값은 홀수 다요~\ㅜ");
+		printf("이제 그만 할까~");
+	}
+	*/
+
+//----------------------------------------
+	
+	/*
+	int in;
+
+	printf("정수 입력 : ");
+	scanf("%d",&in);
+
+	if(in<0)
+		printf("입력 값은 0보다 작아요\n");
+	if(in>0)
+		printf("입력 값이 0보다 크군요\ㅜ");
+	if(in==0)
+		printf("입력 값은 0이닷!!!\n");
+	*/
+
+//-----------------------------------------
+	
+	//문제 if
+	//입력값이 3의 배수인지 판단하기
+	/*
+	int in1;
+	
+	printf("정수 입력 : ");
+	scanf("%d",&in1);
+
+	if(in1%3 == 0)
+		printf("입력값은 3의 배수라고~\n");
+	if(in1%3 != 0)
+		printf("3의 배수가 아니네요~\n");
+	*/
+
+	
+	//절대값 구하는 방법 : 입력값이 -일때 값에 -1곱해준다
+	/*
+	int in1, con;
+	
+	printf("숫자 입력 : ");
+	scanf("%d",&in1);
+
+	if(in1<0){
+		con = in1 * -1;
+		printf("%d의 절대값은 %d이다요\n",in1,con);
+	}
+	if(in1>=0){
+		con  = in1;
+		printf("절대값 %d~\n",con);
+
+	}
+	*/
+	
+
+	//두수를 입력 받아 큰수 구하기
+	/*
+	int in1, in2;
+
+	printf("첫번째 정수 : ");
+	scanf("%d",&in1);
+	printf("두번째 정수 : ");
+	scanf("%d",&in2);
+
+	if(in1 > in2)
+		printf("%d가 %d보다 큰거 알잖아\n",in1, in2);
+	if(in1 < in2)
+		printf("%d가 %d보다 크다공!!\n",in2,in1);
+	*/
+
+	//두수 입력받아 큰수가 짝수이면 출력하시오
+	/*
+	int in1, in2, max;
+
+	printf("첫번째 정수 : ");
+	scanf("%d",&in1);
+	printf("두번째 정수 : ");
+	scanf("%d",&in2);
+
+	if(in1>in2)
+		max = in1;
+	if(in2>in1)
+		max = in2;
+	if(max%2 == 0)
+		printf("%d는(은) 큰수이고 짝수입니다\n",max);
+	*/
+
+	//두수를 입력 받아 합이 짝수이고 3의 배수인 수를 출력
+	/*
+	int in1, in2, sum;
+
+	printf("첫번째 정수 : ");
+	scanf("%d",&in1);
+	printf("두번째 정수 : ");
+	scanf("%d",&in2);
+
+	sum = in1 + in2;
+
+	if(sum%2 == 0 && sum%3 == 0)
+		printf("합이 짝수이자 3의 배수~ 빙고!!^^\n");
+	if(sum%2 != 0 || sum%3 != 0)
+		printf("잘좀해라~\n");
+	*/
+
+	//세수를 입력 받아 큰 수를 출력하시오
+	/*
+	int num1, num2, num3, max;
+
+	scanf("%d%d%d", &num1, &num2, &num3);
+
+	if(num1>num2)
+		max=num1;
+	if(num2>=num1)
+		max=num2;
+	if(num3>max)
+		max=num3;
+
+	printf("max : %d", max);
+	*/
+	
+//-----------------------------------------------
+
+	//if ~ else 문
+	/*
+	int num1, num2;
+
+	printf(“정수  두  개를 입력하세요”);
+	scanf(“%d%d”, &num1, &num2);
+
+	if(num1 > num2) {        // num1>num2이 ‘참’이면 아래의 if 블록을 실행!				
+		printf(“num1이 num2보다 큽니다. \n”);
+		printf(“%d > %d \n”, num1, num2);
+	} else	{  	         // num1>num2이 ‘거짓’이면 아래의 else 블록을 실행!
+		printf(“num1이 num2보다 크지 않습니다. \n”);
+		printf(“%d <= %d \n”, num1, num2);
+	} 
+	*/
+
+        // 은행 출금!
+	/*
+	int balance =78110;	// 잔고..
+	int in;			// 출금액
+
+	printf("통장에 잔액은 %d\\ !!\n", balance);
+	printf("얼마 출금..? ");
+	scanf("%d", &in);
+
+	printf("당신이 신청한 금액은 %d\\ \n", in);
+	// if ~ else 처리해서..
+	if( in <= balance && in > 0 && in%1000 == 0 ) {	// 출금에 성공했다면 
+							// 잔액이 얼마 남았습니다 를 출력
+		balance -= in;
+		printf("출금 성공!! 잔액은 %d 원\n", balance);
+	}
+	else {	// 실패하는 경우에는 
+		    // 잔액이 부족하거나, 천원단위로 입력해주세요.
+		printf("출금오류!! 잔액부족 혹은 단위가 틀렸습니다.\n");
+	}
+	*/
+
+	// 점수를 입력 받아 합격여부 판단
+	/*
+	int kor, eng mat;	// 과목별 점수 변수
+	double ave;			// 평균을 저장하기 위한 변수
+
+	printf("국어 점수를 입력해 주세요 : ");
+	scanf("%d", &kor);
+	printf("영어 점수를 입력해 주세요 : ");
+	scanf("%d", &eng);
+	printf("수학 점수를 입력해 주세요 : ");
+	scanf("%d", &mat);
+
+	ave = (kor + eng + mat) / 3.0;		// 평균을 구해 ave에 저장
+	if ( ave >= 60 && kor >= 40 && eng >= 40 && mat >=40 ) {
+		printf("당신은 합격입니다.\n");
+	} else {
+		printf("당신은 불합격입니다.\n");
+	}
+	*/
+
+//-----------------------------------------------
+
+	// 중첩 if문
+	// 입력한 값이 양수인지 음수인지 확인하고, 
+	// 양수일땐 홀수인지 짝수 인지 다시 확인해서 출력
+	/*
+	int su;	
+
+	printf("정수 하나 입력 : "); 
+	scanf ("%d", &su );
+   
+	if (su >= 0) {                             
+         if ( (su % 2) == 0 )                    
+                 printf("%d : 양의 짝수", su);	  
+         else		    	 
+                 printf("%d : 양의 홀수", su);	  
+	} else	{	 
+         printf(" %d : 음수", su); 
+	}          
+	printf("\n----- 프로그램 실행 끝 -----");
+	*/
+
+	// 문제 - 중처if
+	// 키와 신장을 입력 받아서 사용가능 여부 판단하는 프로그램
+	/*	
+	int height;  	 // 키
+	int weight;	 // 몸무게
+
+	printf("키를 입력 하시오 : ");
+	scanf("%d",&height);
+	printf("몸무게를 입력 하시오 : ");
+	scanf("%d",&weight);
+	
+	// 1.키의 허용 범위 150 ~199
+	if(height >= 150 && height < 200){
+		// 2.몸무게 허용 범위	
+		if(weight >= 40 && weight <100 ){	
+			printf("당신은 이용가능 하십니다^^\n");
+			printf("즐거운 시간 되세요\n");
+		}else{
+			printf("죄송하지만 몸무게가 맞지 않습니다\n");
+		}
+	}else{
+		printf("죄송하지만 운행 조건에 맞지 않습니다\n");
+	}
+	*/
+
+	// Q-2 - 세과목의 점수 입력 받아서 성적 구하기
+	/*
+	int num1 , num2 , num3 , total;
+	double result ;     char lv;
+
+	printf("국어, 수학, 영어 점수를 입력하시오 \n");
+	scanf("%d%d%d" , &num1 , &num2 , &num3);
+	total = num1 + num2 + num3;
+	result = total/3.0; 
+	//printf("평균 점수 : %d\n",result);
+
+	if(result >= 90)
+		lv = 'A';
+		//printf(" A!! 참 잘했어요\n");
+	else if(result >= 80)
+		lv = 'B';
+	    //printf(" B! 잘하셨어요 \n");
+	else if(result >= 70)
+		lv = 'C';
+		//printf(" C! 분발하세요 \n");
+	else if(result >= 60)
+		lv = 'D';
+		//printf(" D! 어쩌려 그래요 \n");
+	else
+		lv = 'F';
+		//printf(" F!!!! 공부를 넘 안하는군요ㅠㅠ\n");
+	
+	printf("총점 : %d, 평균 : %f, 학점 : %c\n", total, result, lv);
+	*/
+	
+}
+
+

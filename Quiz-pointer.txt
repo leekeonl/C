@@ -1,0 +1,15 @@
+1. main 에서 문자 변수를 선언하고, 
+      함수에서 하나의 문자를 입력 받아 소문자를 대문자로 변환하시오
+      Ex>   int main ( ) {  
+                      char  ch ;
+	         UpprerChar ( &ch ) ;    Showch(ch);
+              }
+              void UpperChar ( char *pch ) {   }
+   2. main 에서 arr[5]배열선언 후 
+      함수에서 랜덤한(난수) 1 ~ 100이하의 수를 배열에 저장후에,
+      큰수  와  작은수를 구하시오.
+      Ex>   int main ( ) {
+                      int  arr[5], max = 0, min = 0 ;
+                      RandMaxMin ( arr , &max , &min ) ;     ShowMaxMin(max, min);
+              }
+              void RandMaxMin ( int * parr , int * pmax , int * pmin ) {   }

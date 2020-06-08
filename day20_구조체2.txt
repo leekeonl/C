@@ -1,0 +1,284 @@
+/*
+① 구조체 포인터
+  : 구조체로 만든 변수도 변수임으로 메모리에 생성되었다면 주소값을 가지게 된다. 
+  따라서 이러한 구조 체형 변수의 주소값을 저장 할 수 있는 포인터 변수도 생성 할 수 있다.
+
+
+② 구조체 변수 선언
+ - struct 구조체명 *포인터변수명; 
+   // 구조체형 변수의 주소값을 보관 할 수 있는 포인터 변수
+  
+ - struct 구조체명 *배열명[크기]; 
+   // 구조체형 포인터 변수를 여러개(배열) 만드는 방법
+
+
+③ 구조체형 변수는 자신과 같은 자료형을 가지는 구조체형 변수의 주소값 만을 보관 할 수 있다.
+  struct std ob;
+  struct std *sp = &ob; 
+  // ob의 자료형이 struct std형 임으로 sp가 ob의 주소를 보관할 수 있다.
+
+
+④ 구조체형 포인터는 구조체형 변수의 시작 주소값을 보관한다. 
+   이때 구조체형 변수의 시작 주소값은 첫 번째 멤버변수의 시작주소와 동일 하지만 
+  자료형이 다름으로 오해하지 말아야 한다. 
+   구조체형 포인터를 역참조하면 구조체형 변수가 나온다.
+
+   ex )  typedef struct myst{
+	    int first;
+	    double second;
+      	 }My;
+
+     	 void main ( ){
+	
+         My a = { 10, 110.5};
+	     My *sp = &a;
+
+	     printf("&a = %p\n", &a);
+	     printf("&a.first = %p\n", &a.first);
+	     printf("&a.second = %p\n", &a.second);
+	     printf("sp = %p\n", sp);
+         }
+
+            a 시작 ->|------------------  a의 영역 --------------------|
+                        -------------------------------------------------
+      a.first 시작 ->|        a.first = 10        |          a.second = 110.5        |
+                        ------------------------------------------------- 
+
+        -> a 의 주소값과 a.first 의 주소값은 동일하다.
+	  그러나, a의 주소값인 &a는 struct myst형 포인터 이고 &a.first는 int형 포인터이다.
+	   포인터 변수를 역참조시 포인터와 같은 자료형의 data가 나오므로, 
+          struct myst형 포인터인 sp를 역참조 하면 struct myst형인 a가 나온다.
+          (10이 나오는 것이 아니다! 10이 나오려면 포인터가 int형이어야 한다. 
+           즉, &a.first의 값을 가지는 int형 포인터 변수를 역참조 해야 10이 나오게 된다.)
+
+⑤ 역참조를 통해 포인터 변수가 가리키는 구조체 변수 안의 값을 꺼내오는 방법
+   - (*구조체형포인터).호출할멤버변수명;
+     ex )  (*sp).first
+   - 구조체형포인터->호출할멤버변수명;
+     ex )   sp->first 	 
+         
+     '->' 연산자는 구조체형 포인터를 통해 구조체 안에 있는 변수를 호출하기 위해 사용하는 연산자.
+     A->B로 사용시 "A가 가르키는 구조체 변수 안에있는 B를 호출해라" 라는 뜻이된다.
+     (->는 “가리키는곳 안에 있는” 이라고 읽으면 된다.)   
+*/
+
+//-------------------------------------------------------------------------------------
+
+// 예제 - 구조체 포인터의 참조 방법
+/*
+#include <stdio.h>
+
+typedef struct St{
+   int first;
+   double second;
+}St, *pst;	// 구조체 선언시 구조체 포인터 자료형 별명도 생성이 가능하다
+
+void main ( ) {
+
+   St a = { 10, 110.5};
+   St *sp = &a;	   // pst a;
+   sp = &a;   // struct myst형 포인터 sp에는 struct myst형 변수의 주소만 보관할 수 있다.
+
+   printf("(*sp).first = %d\n", (*sp).first);
+   printf("(*sp).second = %lf\n", (*sp).second);
+   printf("sp->first = %d\n", sp->first);
+   printf("sp->second = %lf\n", sp->second);
+}
+*/
+
+//----------------------------------------------------------
+
+// 예제 - 구조체형 포인터를 통한 구조체형 배열의 접근
+/*
+#include <stdio.h>
+
+typedef struct my {
+   int first;
+   double second;
+}My, *pst;
+
+void main ( ) {
+
+   My k[3] = { {10, 110.5}, {20, 120.5}, {30, 130.5} };
+   pst sp = k;   // k는 struct my형 배열의 이름임으로 struct my형 포인터 이다.
+   // My *sp = k;
+   // sp = k;
+   
+   printf("(sp+0)->first = %d\n", (sp+0)->first);
+   printf("(sp+0)->second = %lf\n", (sp+0)->second);
+   printf("\n");
+
+   printf("sp->first = %d\n", sp->first);
+   printf("sp->second = %lf\n", sp->second);
+   printf("(sp+1)->first = %d\n", (sp+1)->first);
+   printf("(sp+1)->second = %lf\n", (sp+1)->second);
+   printf("(sp+2)first = %d\n", sp[2].first);	// 배열 접근 형식과 동일하게 사용가능하다.
+   printf("(sp+2)->second = %lf\n", sp[2].second);
+}
+*/
+
+/*
+#include <stdio.h>
+#include <string.h>
+
+typedef struct vc {
+
+   char	name[50];
+   int	level;
+   char	item[50];
+
+}VC;
+
+void  main(){
+   
+   VC ct[2];		   
+   VC *pt = ct;
+   int a;
+
+   strcpy( pt[0].name, "둘리");
+   pt[0].level = 100;	
+   strcpy( pt[0].item, "호이호이");
+
+   strcpy( pt[1].name, "홍길동");
+   pt[1].level = 78;
+   strcpy( pt[1].item, "변신술");
+
+   for( a=0; a<2 ; a++ ){
+      printf("ct[%d] 이름: %s \n",  a, pt[a].name);
+      printf("ct[%d] 레벨: %d \n",  a, pt[a].level);
+      printf("ct[%d] item: %s \n",  a, pt[a].item);
+	  printf("\n");
+   }
+}
+*/
+
+//=======================================================================
+
+// 구조체 함수 - call by value
+/*
+#include <stdio.h>
+
+typedef struct  stu {
+	char	name[20];
+	int	kor,  mat,  eng;
+}ST;
+void  res(ST  ist);
+void  main() {
+	ST  s1 = {"홍길동", 100, 50, 20 }; 
+	ST  s2 = {"둘리", 98, 97, 99 }; 	
+	res(s1);
+	res(s2);
+}
+void  res(ST  ist) {	
+	int  sum = ist.kor + ist.eng + ist.mat;
+	double  avg = sum / 3.0;
+	printf("%s의 총점 : %d / 평균 : %.2f \n", ist.name, sum, avg);
+}
+*/
+
+//-------------------------------------
+
+// 구조체 함수 - 반환 자료형
+/*
+#include <stdio.h>
+
+typedef  struct  stu {
+	char name[20];
+	int	kor,  mat,  eng,  sum;
+	double  avg;	
+}ST;
+ST  res(ST  ist);
+void  main() {
+	ST  s = {"홍길동", 100, 50, 20, 0, 0 }; 	
+	s = res(s);	
+	printf("%s의 총점 : %d / 평균 : %.2f \n"
+		                    ,s.name,  s.sum,  s.avg);
+}
+ST  res(ST  ist) {	
+	ist.sum = ist.kor + ist.eng + ist.mat;
+	ist.avg = ist.sum / 3.0;	
+	return  ist;
+}
+*/
+
+//-------------------------------------
+
+// 구조체 함수 - call by reference
+/*
+#include <stdio.h>
+
+typedef struct  stu {
+   char	name[20];
+   int	kor,  mat,  eng , sum;
+   double avg;
+}ST;
+void  res(ST * ist);
+void  main() {
+    ST  s1 = {"홍길동", 100, 50, 20 ,0,0}; 	
+    res(&s1);
+	printf("%s의 총점 : %d / 평균 : %.2f\n",s1.name, s1.sum, s1.avg);
+}
+void  res(ST * ist) {	
+   ist->sum = ist->kor + ist->eng + ist->mat;
+   ist->avg = ist->sum / 3.0;
+   //printf("%s의 총점 : %d / 평균 : %.2f\n",ist->name, sum, avg);
+}
+*/
+
+//-------------------------------------
+
+// 구조체 배열
+
+#include <stdio.h>
+
+typedef struct  stu {
+   char name[20];   int  kor, mat, eng;
+}ST;
+void  res(ST * ist);
+void  main() {
+    ST  s1[2] = {{"홍길동", 100, 50, 20 },{"둘리", 98, 97, 99 }}; 
+    res(s1);
+}
+void  res(ST * ist) {
+   int  sum ,i;
+   double  avg;
+   for(i=0;i<2;i++){
+       sum = (ist+i)->eng+(ist+i)->kor+(ist+i)->mat;
+       avg = sum / 3.0;
+       printf("%s의 총점 : %d / 평균 : %.2f  \n" ,(ist+i)->name,                            
+                sum, avg);
+   }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

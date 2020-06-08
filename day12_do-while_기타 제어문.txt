@@ -1,0 +1,81 @@
+#include<stdio.h>
+
+void main(){
+
+	/*
+	do while문
+	1. 명령문을 먼저 실행한 후에 조건식을 확인 한다.
+	2. 반복 영역이 무조건 한 번 이상 실행될 때 쓰인다. 
+	*/
+
+	// 입력 받은수가 3 미만일때는 해당 값들을 계속 더하는 코드
+	/*
+	int  total=0, num=0;
+
+	do
+	{
+		printf(“정수 입력(0 to quit): ”);
+		scanf(“%d”, &num);
+		total += num;
+	} while ( num < 3 );
+
+	printf(“합계 : %d \n”, total);
+	*/ 
+
+//==============================================================
+
+	/*
+	break문
+	: switch~case문, for문, while문, do~while문 안에서 사용하여, 블록을 탈출하라는 의미로
+	  for문이나 while문 또는 switch~case문, do~while문의 실행을 종료하라는 의미이다.
+	  (반복문 수행중에 블록을 탈출하고 싶을 때)
+	*/
+
+	// 1부터 누적되는 값이 5000 이상이면 프로그램 종료
+	/*
+	int sum=0, num=0;
+
+	while (1)
+	{
+		sum += num; 
+		if ( sum > 5000 ) {
+		     break;	//반복문 탈출!
+		     num++;
+		}
+	}
+	printf(“sum : %d \n”, sum);
+	printf(“num : %d \n”, num);
+	*/
+
+//==============================================================
+
+	/*
+	continue문
+	1. continue문은 break와 반대되는 명령
+	2. while문, do~while문, for문 등의 반복문을 사용할 때 continue문을 만나면 이하의
+	   명령문은 수행하지 않고 조건식부터 수행한다.
+	3. 반복 블록 안에서 continue를 만나면, for문일 경우에는 증감식 쪽으로, 
+	   while문이나 do~while문일 경우에는 조건식 쪽으로 실행 순서를 변경 한다.
+	*/
+
+	// 1~19 사이의 수 중에서 5 와 9의 배수는 출력하지 않는 프로그램
+	/*
+	int num = 1;
+	printf(“start!!”);
+
+	while ( num < 20 )
+	{
+		if( num%5==0 || num%9==0 ){
+		     continue;		//조건검사 이동!
+		     printf(“%d”, num); // 실행되지 않는다
+		}
+		printf(“%d”, num);
+	}
+	printf(“end!! \n”);
+	*/
+
+
+
+
+
+}
